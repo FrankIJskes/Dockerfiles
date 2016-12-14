@@ -1,7 +1,7 @@
 FROM debian:wheezy
-MAINTAINER Idi Eradiri
+MAINTAINER Frank IJskes
 
-# docker run -it -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY=$DISPLAY --rm kongkoro/pycharm
+# docker run -it -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY=$DISPLAY --rm frank/pycharm
 
 ENV PYCHARM_HOME=/etc/pycharm
 RUN apt-get update &&\
@@ -17,10 +17,13 @@ RUN apt-get update &&\
 	vim \
     python-psutil \
     python-joblib \
-    python-confargparse \
-    python-configargparse \
+    python-argparse \
+    python-argvalidate \
+    python-configobj \
+    python-configglue \
+    python-iniparse \
     --no-install-recommends
-RUN pip install web.py screenio
+RUN pip install web.py
 RUN wget https://download.jetbrains.com/python/pycharm-community-2016.2.3.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1 &&\
     wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py &&\
