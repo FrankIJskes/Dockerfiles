@@ -18,6 +18,7 @@ RUN apt-get update &&\
     python-configobj \
     python-configglue \
     python-iniparse \
+    python-all \
     --no-install-recommends
 RUN pip install web.py
 

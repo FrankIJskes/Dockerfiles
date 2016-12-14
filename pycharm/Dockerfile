@@ -22,9 +22,11 @@ RUN apt-get update &&\
     python-configobj \
     python-configglue \
     python-iniparse \
+    python-all \
+    build-essential \
     --no-install-recommends
 RUN pip install web.py
-RUN wget https://download.jetbrains.com/python/pycharm-community-2016.2.3.tar.gz -O /tmp/pycharm.tar.gz &&\
+RUN wget https://download.jetbrains.com/python/pycharm-community-2016.3.1.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1 &&\
     wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py &&\
     rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
