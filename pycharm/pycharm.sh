@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# rename the terminal to something more usefull
+#export PROMPT_COMMAND='echo -en "\033]0;FRANKS PYCHARM\a"'
+echo -en "\033]0;frankij/PyCharm CE\a"
+
+# minimize the terminal
+xdotool windowminimize $(xdotool getactivewindow)
+
 xhost +local:docker
 
 # .PyCharmCE2016.3 is the default directory to store the settings for pycharm
