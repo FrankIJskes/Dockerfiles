@@ -23,16 +23,19 @@ RUN apt-get update &&\
     python-configobj \
     python-configglue \
     python-iniparse \
+    cython \
     python3 \
     python3-pip \
     python3-all \
-    python3-openpyxl \
     python3-psutil \
     python3-joblib \
     python3-configobj \
+    cython3 \
     build-essential \
     --no-install-recommends 
-RUN pip install web.py
+RUN pip install --upgrade pip
+RUN pip install web.py openpyxl
+RUN pip3 install openpyxl
 RUN wget https://download.jetbrains.com/python/pycharm-community-2016.3.1.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1 &&\
     wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py &&\
