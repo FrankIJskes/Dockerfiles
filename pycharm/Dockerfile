@@ -13,6 +13,7 @@ RUN apt-get update &&\
     gcc \
     libxtst6 \
     python \
+    python-dev \
     python-pip \
     python-all \
     python-openpyxl \
@@ -25,6 +26,7 @@ RUN apt-get update &&\
     python-iniparse \
     cython \
     python3 \
+    python3-dev \
     python3-pip \
     python3-all \
     python3-psutil \
@@ -37,8 +39,11 @@ RUN pip install --upgrade pip
 RUN pip install web.py openpyxl
 RUN pip3 install openpyxl
 RUN wget https://download.jetbrains.com/python/pycharm-community-2016.3.1.tar.gz -O /tmp/pycharm.tar.gz &&\
-    mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1 &&\
-    wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
+    mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
+RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
+RUN /usr/bin/python3  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
+
+RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
 #RUN /usr/bin/python3 /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 RUN rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
 
