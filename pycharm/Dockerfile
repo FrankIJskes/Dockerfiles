@@ -4,6 +4,8 @@ MAINTAINER Frank IJskes
 # docker run -it -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY=$DISPLAY --rm frank/pycharm
 
 ENV PYCHARM_HOME=/etc/pycharm
+RUN echo -e "\ndeb http://ppa.launchpad.net/kivy-team/kivy/ubuntu trusty main" >> /etc/apt/sources.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A863D2D6
 RUN apt-get update &&\
     apt-get install -y \
     wget \
@@ -13,11 +15,6 @@ RUN apt-get update &&\
     gcc \
     libxtst6 \
     build-essential \
-    qt4-dev-tools \
-    qt4-designer \
-    mesa-common-dev \
-    libxml2-dev \
-    libxslt-dev \
     python \
     python-dev \
     python-pip \
@@ -39,10 +36,12 @@ RUN apt-get update &&\
     python3-joblib \
     python3-configobj \
     cython3 \
+    python-kivy \
+    python3-kivy \
     --no-install-recommends 
 RUN pip install --upgrade pip
-RUN pip install web.py openpyxl ipaddress kivy
-RUN pip3 install openpyxl ipaddress kivy
+RUN pip install web.py openpyxl ipaddress
+RUN pip3 install openpyxl ipaddress
 RUN wget https://download.jetbrains.com/python/pycharm-community-2016.3.2.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
