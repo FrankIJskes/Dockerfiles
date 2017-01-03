@@ -15,6 +15,9 @@ RUN apt-get update &&\
     build-essential \
     qt4-dev-tools \
     qt4-designer \
+    mesa-common-dev \
+    libxml2-dev \
+    libxslt-dev \
     python \
     python-dev \
     python-pip \
