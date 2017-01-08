@@ -50,3 +50,6 @@ RUN /usr/bin/python3  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inp
 RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
 #RUN /usr/bin/python3 /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 RUN rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
+
+
+ENTRYPOINT ["/etc/pycharm/bin/pycharm.sh"]
