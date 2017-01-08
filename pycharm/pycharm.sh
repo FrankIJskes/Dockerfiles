@@ -18,7 +18,7 @@ nohup docker run -it \
   -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
   -v /home/frank/Dropbox/PycharmProjects:/root/PycharmProjects \
   -v ~/.PyCharmCE2016.3:/root/.PyCharmCE2016.3 \
-  -p 8080:8080
+  -p 8080:8080 \
   -e DISPLAY=$DISPLAY \
   --rm  \
   frankij/pycharm \
