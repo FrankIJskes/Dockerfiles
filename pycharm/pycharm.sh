@@ -21,5 +21,4 @@ nohup docker run -it \
   -p 8080:8080 \
   -e DISPLAY=$DISPLAY \
   --rm  \
-  frankij/pycharm \
-  &
+  frankij/pycharm &
