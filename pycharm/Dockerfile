@@ -47,9 +47,7 @@ RUN wget https://download.jetbrains.com/python/pycharm-community-2016.3.2.tar.gz
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 RUN /usr/bin/python3  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 
-RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
-#RUN /usr/bin/python3 /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
+#RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
 RUN rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
-
 
 ENTRYPOINT ["/etc/pycharm/bin/pycharm.sh"]

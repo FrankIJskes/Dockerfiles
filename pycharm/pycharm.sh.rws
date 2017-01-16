@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# rename the terminal to something more usefull
+#export PROMPT_COMMAND='echo -en "\033]0;FRANKS PYCHARM\a"'
+echo -en "\033]0;frankij/PyCharm CE\a"
+
+# minimize the terminal
+xdotool windowminimize $(xdotool getactivewindow)
+
+xhost +local:docker
+
+# .PyCharmCE2016.3 is the default directory to store the settings for pycharm
+# It uses the X socket
+# and a redirect for the projects.
+
+nohup docker run -i \
+  -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
+  -v /home/ijskesf/Dropbox/PycharmProjects:/root/PycharmProjects \
+  -v ~/.PyCharmCE2016.3:/root/.PyCharmCE2016.3 \
+  --add-host="git.beheer.tabsvm.local:10.78.5.141" \
+  -e DISPLAY=$DISPLAY \
+  --rm  \
+  frankij/pycharm \
+  &
+
