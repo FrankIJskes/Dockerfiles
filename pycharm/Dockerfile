@@ -5,6 +5,7 @@ MAINTAINER Frank IJskes
 
 ENV PYCHARM_HOME=/etc/pycharm
 RUN apt-get update &&\
+    apt-get upgrade -y &&
     apt-get install -y \
     wget \
     git \
