@@ -29,6 +29,7 @@ RUN apt-get update &&\
     python-configobj \
     python-configglue \
     python-iniparse \
+    python-yaml \
     cython \
     python3 \
     python3-dev \
@@ -37,6 +38,7 @@ RUN apt-get update &&\
     python3-psutil \
     python3-joblib \
     python3-configobj \
+    python3-yaml \
     cython3 \
     --no-install-recommends 
 RUN pip install --upgrade pip
