@@ -4,8 +4,8 @@ MAINTAINER Frank IJskes
 # docker run -it -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY=$DISPLAY --rm frank/pycharm
 
 ENV PYCHARM_HOME=/etc/pycharm
-RUN apt-get update &&\
-    apt-get upgrade -y &&
+RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y \
     wget \
     git \
