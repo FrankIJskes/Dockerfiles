@@ -31,6 +31,7 @@ RUN apt-get update &&\
     python-configglue \
     python-iniparse \
     python-yaml \
+    python-xmltodict \
     cython \
     python3 \
     python3-dev \
