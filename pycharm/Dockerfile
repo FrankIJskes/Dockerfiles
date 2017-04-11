@@ -44,8 +44,8 @@ RUN apt-get update && \
     cython3 \
     --no-install-recommends 
 RUN pip install --upgrade pip
-RUN pip install web.py openpyxl ipaddress kivy
-RUN pip3 install openpyxl ipaddress kivy termcolor
+RUN pip install web.py openpyxl ipaddress kivy termcolor
+RUN pip3 install       openpyxl ipaddress kivy termcolor
 RUN wget https://download.jetbrains.com/python/pycharm-community-2017.1.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
