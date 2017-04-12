@@ -32,6 +32,8 @@ RUN apt-get update && \
     python-iniparse \
     python-yaml \
     python-xmltodict \
+    python-lxml \
+    python-cssselect \
     cython \
     python3 \
     python3-dev \
@@ -41,11 +43,15 @@ RUN apt-get update && \
     python3-joblib \
     python3-configobj \
     python3-yaml \
+    python3-lxml \
+    python3-cssselect \
     cython3 \
     --no-install-recommends 
 RUN pip install --upgrade pip
-RUN pip install web.py openpyxl ipaddress kivy termcolor
-RUN pip3 install       openpyxl ipaddress kivy termcolor
+RUN pip  install web.py openpyxl ipaddress kivy termcolor
+RUN pip3 install        openpyxl ipaddress kivy termcolor
+RUN pip  install --upgrade requests
+RUN pip3 install --upgrade requests
 RUN wget https://download.jetbrains.com/python/pycharm-community-2017.1.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
