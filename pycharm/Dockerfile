@@ -52,7 +52,7 @@ RUN pip  install web.py openpyxl ipaddress kivy termcolor
 RUN pip3 install        openpyxl ipaddress kivy termcolor
 RUN pip  install --upgrade requests
 RUN pip3 install --upgrade requests
-RUN wget https://download.jetbrains.com/python/pycharm-community-2017.1.tar.gz -O /tmp/pycharm.tar.gz &&\
+RUN wget https://download.jetbrains.com/python/pycharm-community-2017.1.2.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 RUN /usr/bin/python3  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
