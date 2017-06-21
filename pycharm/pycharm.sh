@@ -13,7 +13,7 @@ xhost +local:docker
 # and a redirect for the projects.
 # and allow for the default port when developing with web.py
 
-nohup docker run -it \
+docker run  \
   -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
   -v /home/frank/Dropbox/PycharmProjects:/root/PycharmProjects \
   -v ~/.PyCharmCE2017.1:/root/.PyCharmCE2017.1 \

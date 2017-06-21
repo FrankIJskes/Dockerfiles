@@ -34,6 +34,8 @@ RUN apt-get update && \
     python-xmltodict \
     python-lxml \
     python-cssselect \
+    python-setuptools \
+    python-wheel \
     cython \
     python3 \
     python3-dev \
@@ -46,11 +48,22 @@ RUN apt-get update && \
     python3-lxml \
     python3-cssselect \
     python3-psycopg2 \
+	python3-setuptools \
     cython3 \
     --no-install-recommends 
 RUN pip install --upgrade pip
-RUN pip  install web.py openpyxl ipaddress kivy termcolor
-RUN pip3 install        openpyxl ipaddress kivy termcolor
+RUN apt-get install -y \
+	python-kivy \
+	python3-kivy \
+	python-termcolor \
+	python3-termcolor \
+	python-ipaddress \
+	python-openpyxl \
+	python3-openpyxl \	
+    --no-install-recommends 
+
+RUN pip  install web.py    
+RUN pip3 install           ipaddress
 RUN pip  install --upgrade requests
 RUN pip3 install --upgrade requests
 RUN wget https://download.jetbrains.com/python/pycharm-community-2017.1.4.tar.gz -O /tmp/pycharm.tar.gz &&\
