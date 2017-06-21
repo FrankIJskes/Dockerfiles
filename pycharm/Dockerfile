@@ -45,6 +45,7 @@ RUN apt-get update && \
     python3-yaml \
     python3-lxml \
     python3-cssselect \
+    python3-psycopg2 \
     cython3 \
     --no-install-recommends 
 RUN pip install --upgrade pip
