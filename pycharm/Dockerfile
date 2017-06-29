@@ -63,7 +63,7 @@ RUN apt-get install -y \
     --no-install-recommends 
 
 RUN pip  install web.py    
-RUN pip3 install           ipaddress django-background-tasks
+RUN pip3 install           ipaddress Django django-background-tasks
 RUN pip  install --upgrade requests
 RUN pip3 install --upgrade requests
 RUN wget https://download.jetbrains.com/python/pycharm-community-2017.1.4.tar.gz -O /tmp/pycharm.tar.gz &&\
