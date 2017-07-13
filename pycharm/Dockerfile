@@ -59,7 +59,8 @@ RUN apt-get install -y \
 	python3-termcolor \
 	python-ipaddress \
 	python-openpyxl \
-	python3-openpyxl \	
+	python3-openpyxl \
+	python3-jinja2 \
     --no-install-recommends 
 
 RUN pip  install web.py    
