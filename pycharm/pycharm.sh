@@ -16,7 +16,7 @@ xhost +local:docker
 docker run  \
   -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
   -v /home/frank/Dropbox/PycharmProjects:/root/PycharmProjects \
-  -v ~/.PyCharmCE2017.1:/root/.PyCharmCE2017.1 \
+  -v ~/.PyCharmCE2017.2:/root/.PyCharmCE2017.2 \
   -p 8080:8080 \
   -e DISPLAY=$DISPLAY \
   --rm  \
