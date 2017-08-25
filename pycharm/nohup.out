@@ -6275,3 +6275,7 @@ Aug 17, 2017 8:31:18 AM java.util.prefs.FileSystemPreferences$1 run
 INFO: Created user preferences directory.
 Aug 17, 2017 8:31:18 AM java.util.prefs.FileSystemPreferences$6 run
 WARNING: Prefs file removed in background /root/.java/.userPrefs/prefs.xml
+Aug 17, 2017 8:56:44 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+Aug 17, 2017 8:56:44 AM java.util.prefs.FileSystemPreferences$6 run
+WARNING: Prefs file removed in background /root/.java/.userPrefs/prefs.xml
