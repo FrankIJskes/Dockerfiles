@@ -13,10 +13,12 @@ xhost +local:docker
 # It uses the X socket
 # and a redirect for the projects.
 
-nohup docker run -i \
+docker run -i \
   -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
+  -p 8081:8080 \
   -v ~/Dropbox/PycharmProjects:/root/PycharmProjects \
-  -v ~/.PyCharmCE2017.2:/root/.PyCharmCE2017.2 \
+  -v ~/.PyCharmCE2017.2:/root/.PyCharmCE2017.2.3 \
+  -v ~/.PyCharmCE2017.3:/root/.PyCharmCE2017.3 \
   --add-host="git.beheer.tabsvm.local:10.78.5.141" \
   -e DISPLAY=$DISPLAY \
   --rm  \
