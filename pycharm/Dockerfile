@@ -1,6 +1,11 @@
 FROM debian:stretch
 MAINTAINER Frank IJskes
 
+# arg zorgt ervoor dat een van buitenaf afkomstige variabale gebruikt kan worden
+# met een default waarde
+ARG PASSED_VERSION=2018.1.4
+ENV VERSION=$PASSED_VERSION
+
 # docker run -it -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY=$DISPLAY --rm frank/pycharm
 
 ENV PYCHARM_HOME=/etc/pycharm
@@ -50,29 +55,32 @@ RUN apt-get update && \
     python3-psycopg2 \
 	python3-setuptools \
     cython3 \
-    --no-install-recommends 
+    --no-install-recommends
 RUN pip install --upgrade pip
 RUN apt-get install -y \
-	python-kivy \
-	python3-kivy \
 	python-termcolor \
 	python3-termcolor \
 	python-ipaddress \
 	python-openpyxl \
 	python3-openpyxl \
 	python3-jinja2 \
-    --no-install-recommends 
+	python3-matplotlib \
+	python3-numpy \
+    --no-install-recommends
 
-RUN pip  install web.py    
-RUN pip3 install           ipaddress Django 
+RUN pip  install web.py
+RUN pip3 install git+https://github.com/webpy/webpy#egg=web.py
+RUN pip3 install ipaddress Django pymongo
 RUN pip  install --upgrade requests
 RUN pip3 install --upgrade requests
-RUN wget https://download.jetbrains.com/python/pycharm-community-2017.3.3.tar.gz -O /tmp/pycharm.tar.gz &&\
+#Kivy keeps skeletons running in pycharm...
+#RUN apt install	python-kivy python3-kivy
+RUN wget https://download.jetbrains.com/python/pycharm-community-${VERSION}.tar.gz -O /tmp/pycharm.tar.gz &&\
     mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 RUN /usr/bin/python3  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 
 #RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
-RUN rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
+RUN apt-get clean ; rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
 
 ENTRYPOINT ["/etc/pycharm/bin/pycharm.sh"]
