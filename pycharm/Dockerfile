@@ -66,6 +66,8 @@ RUN apt-get install -y \
 	python3-jinja2 \
 	python3-matplotlib \
 	python3-numpy \
+	python3-pandas \
+	python3-xlrd \
     --no-install-recommends
 
 RUN pip  install web.py
