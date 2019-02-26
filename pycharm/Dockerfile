@@ -82,6 +82,12 @@ RUN wget https://download.jetbrains.com/python/pycharm-community-${VERSION}.tar.
 RUN /usr/bin/python  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 RUN /usr/bin/python3  /etc/pycharm/helpers/pydev/setup_cython.py build_ext --inplace
 
+# Vanwege continuous delivery pipeline:
+RUN pip3 install asn1crypto bcrypt cached-property click colorama cryptography dnspython 
+RUN pip3 install docopt exchangelib flake8 future gitdb2 GitPython idna jenkinsapi jsonschema lxml mccabe multi-key-dict
+RUN pip3 install docker docker-compose docker-pycreds dockerpty
+
+
 #RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
 RUN apt-get clean ; rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
 

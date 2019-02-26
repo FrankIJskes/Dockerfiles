@@ -18,7 +18,6 @@ docker run -i \
   -p 8081:8080 \
   -v ~/Dropbox/PycharmProjects:/root/PycharmProjects \
   -v ~/.PyCharmCE2018.3:/root/.PyCharmCE2018.3 \
-  -v ~/.PyCharmCE:/root/.PyCharmCE2018.3 \
   -v ~/.PyCharmCE:/root/.PyCharmCE2018.3.3 \
   --add-host="git.beheer.tabsvm.local:10.78.5.141" \
   -e DISPLAY=$DISPLAY \

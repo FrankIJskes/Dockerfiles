@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  tcpdump-ubuntu:
+    container_name: tcpdump-ubuntu
+    hostname: tcpdump-ubuntu
+    image: registry.beheer.tabsvm.local/tabsvm/tcpdump-ubuntu:latest
+    environment:
+      - "TZ=Europe/Amsterdam"
+      - "IFACE=enp1s0"
+    network_mode: "host"
+    #command: bash -c "tcpdump -i eth0 -w /tmp/tcpdump.pcap"
+    # command: bash -c "sleep 1800"
+    # older versions of tcpdump needed -s 65535
+    volumes:
+      - /tmp:/tmp
