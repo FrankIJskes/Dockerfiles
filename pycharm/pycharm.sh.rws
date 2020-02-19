@@ -13,15 +13,34 @@ xhost +local:docker
 # It uses the X socket
 # and a redirect for the projects.
 
+# settingsdir is on host, point to something in the container
+export PYCHARMSETTINGSDIR="pycharmsettings"
+export PROJECTSDIR="PycharmProjects"
+export PYCHARMDIR=".PyCharmCE2019"
+# USERNAME _in_ container
+export USERNAME="frank"
+# userid BOTH in container AND on host
+export USERID=1000
+
+mkdir -p ~/$PROJECTSDIR
+mkdir -p ~/$PYCHARMDIR
+mkdir -p ~/$PYCHARMDIR.java
+mkdir -p ~/$PYCHARMDIR.share
+# mkdir -p ~/$PYCHARMSETTINGSDIR
+
 docker run -i \
   -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
   -p 8081:8080 \
-  -v ~/Dropbox/PycharmProjects:/root/PycharmProjects \
-  -v ~/.PyCharmCE2018.3:/root/.PyCharmCE2018.3 \
-  -v ~/.PyCharmCE:/root/.PyCharmCE2018.3.3 \
+  -v ~/$PROJECTSDIR:/home/$USERNAME/$PROJECTSDIR \
+  -v ~/$PYCHARMDIR:/home/$USERNAME/$PYCHARMDIR \
+  -v ~/$PYCHARMDIR.java:/home/$USERNAME/.java \
+  -v ~/$PYCHARMDIR.share:/home/$USERNAME/.local/share/JetBrains \
   --add-host="git.beheer.tabsvm.local:10.78.5.141" \
   -e DISPLAY=$DISPLAY \
+  -e HOME=/home/$USERNAME \
+  --user $USERID:$USERID \
   --rm  \
+  --name pycharm \
+   --hostname pycharmindocker \
   frankij/pycharm:latest \
   &
-

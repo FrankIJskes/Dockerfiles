@@ -1,0 +1,13 @@
+xhost +
+
+cd /home/ijskesf/stack/intelij
+
+docker run \
+  -it \
+  --rm \
+  -d \
+  -e DISPLAY=unix$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v ${PWD}/data:/data \
+  -v ${PWD}/proj:/proj \
+  alex031544/intelij

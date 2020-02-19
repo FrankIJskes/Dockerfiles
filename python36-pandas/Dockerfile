@@ -26,7 +26,7 @@ RUN apt-get update &&\
     --no-install-recommends
 RUN apt-get install -y \
     git
-RUN pip3 install pymongo requests
+RUN pip3 install pymongo requests pymysql
 RUN pip3 install setuptools
 RUN pip3 install git+https://github.com/webpy/webpy#egg=web.py
 RUN pip3 install matplotlib
